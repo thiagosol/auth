@@ -32,8 +32,21 @@
     </div>
     <script>
         const params = new URLSearchParams(window.location.search);
-        const serviceName = params.get("serviceName");
-        const theme = params.get("theme") || "light";
+        let theme = params.get("theme");
+        let serviceName = params.get("serviceName");
+
+        // Se não veio na URL, tenta pegar do form data (POST)
+        if (!theme) {
+            const formData = new FormData(document.querySelector('form'));
+            theme = formData.get('theme');
+        }
+        if (!serviceName) {
+            const formData = new FormData(document.querySelector('form'));
+            serviceName = formData.get('serviceName');
+        }
+
+        // Fallback para light se não encontrou em nenhum lugar
+        theme = theme || "light";
 
         document.body.setAttribute("data-theme", theme);
 
@@ -46,12 +59,10 @@
             loginLink.href = loginLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
         }
 
-        // Adiciona os parâmetros na action do form
         const form = document.querySelector('form');
         if (form) {
             form.action = form.action + "&theme=" + theme + "&serviceName=" + serviceName;
             
-            // Adiciona campos hidden para theme e serviceName
             const themeInput = document.createElement('input');
             themeInput.type = 'hidden';
             themeInput.name = 'theme';
