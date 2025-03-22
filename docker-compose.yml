@@ -16,6 +16,8 @@ services:
       KEYCLOAK_ADMIN: ${AUTH_USER}
       KEYCLOAK_ADMIN_PASSWORD: ${AUTH_PASS}
       KC_CACHE: local
+      KC_HTTP_ENABLED: true
+      KC_HTTPS_ENABLED: false
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.auth-api.entrypoints=http"
