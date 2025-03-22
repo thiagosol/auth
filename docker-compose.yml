@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  auth:
+    image: quay.io/keycloak/keycloak:24.0.3
+    command: start-dev
+    restart: always
+    container_name: auth
+    environment:
+      KEYCLOAK_ADMIN: ${AUTH_USER}
+      KEYCLOAK_ADMIN_PASSWORD: ${AUTH_PASS}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.auth-api.entrypoints=http"
+      - "traefik.http.routers.auth-api.rule=Host(`auth.thiagosol.com`)"
+      - "traefik.http.routers.auth-api-secure.entrypoints=https"
+      - "traefik.http.routers.auth-api-secure.rule=Host(`auth.thiagosol.com`)"
+      - "traefik.http.routers.auth-api-secure.tls=true"
+      - "traefik.http.routers.auth-api-secure.service=auth-api-secure"
+      - "traefik.http.services.auth-api-secure.loadbalancer.server.port=8080"
+      - "traefik.docker.network=external-sol-apis"
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+    networks:
+      - external-sol-apis
+      - logging-network
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://loki:3100/loki/api/v1/push"
+        loki-external-labels: "service=auth,type=service"
+        loki-retries: "5"
+        loki-batch-size: "400"
+        mode: "non-blocking"
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+volumes:
+  keycloak_data:
+
+networks:
+  logging-network:
+    external: true
+  external-sol-apis:
+    external: true
