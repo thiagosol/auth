@@ -25,11 +25,11 @@
         </form>
         <div class="links-container">
             <#if realm.registrationAllowed>
-            <a href="${url.registrationUrl}" class="link">Criar conta</a>
+            <a href="${url.registrationUrl}" class="link" id="register-link">Criar conta</a>
             </#if>
 
             <#if realm.resetPasswordAllowed>
-            <a href="${url.loginResetCredentialsUrl}" class="link">Esqueci a senha</a>
+            <a href="${url.loginResetCredentialsUrl}" class="link" id="reset-link">Esqueci a senha</a>
             </#if>
         </div>
     </div>
@@ -44,6 +44,18 @@
         // Atualiza o título se houver um serviceName
         if (serviceName) {
             document.getElementById("service-title").innerText = serviceName;
+        }
+
+        // Adiciona o parâmetro theme nos links
+        const registerLink = document.getElementById("register-link");
+        const resetLink = document.getElementById("reset-link");
+
+        if (registerLink) {
+            registerLink.href = registerLink.href + "?theme=" + theme;
+        }
+
+        if (resetLink) {
+            resetLink.href = resetLink.href + "?theme=" + theme;
         }
     </script>
 </body>
