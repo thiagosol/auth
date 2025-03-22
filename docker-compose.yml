@@ -12,7 +12,8 @@ services:
       KC_DB_USERNAME: ${DB_POSTGRES_USER}
       KC_DB_PASSWORD: ${DB_POSTGRES_PASS}
       KC_HOSTNAME: auth.thiagosol.com
-      KC_PROXY: edge
+      KC_HOSTNAME_STRICT_HTTPS: true
+      KC_PROXY_HEADERS: forwarded
       KC_BOOTSTRAP_ADMIN_USERNAME: ${AUTH_USER}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${AUTH_PASS}
       KC_CACHE: local
