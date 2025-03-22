@@ -13,7 +13,7 @@
             <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
             <input type="password" name="password" placeholder="Senha" required>
             <input type="hidden" name="credentialId" value="${auth.credentialId!}">
-            <#if realm.rememberMe && !auth.showUsername()>
+            <#if realm.rememberMe && !(auth.showUsername??)>
             <div class="remember-me">
                 <label class="checkbox-container">
                     <input type="checkbox" name="rememberMe" <#if auth.rememberMe??>checked</#if>>
