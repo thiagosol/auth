@@ -15,13 +15,12 @@ services:
       KC_BOOTSTRAP_ADMIN_USERNAME: ${AUTH_USER}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${AUTH_PASS}
       KC_CACHE: local
-      KC_PROXY_HEADERS: forwarded
-      KC_HOSTNAME_STRICT: false
-      KC_HOSTNAME_STRICT_HTTPS: false
+      KC_HOSTNAME_STRICT: true
+      KC_HOSTNAME_STRICT_HTTPS: true
       KC_HTTP_ENABLED: true
       KC_HTTPS_ENABLED: false
       KC_PROXY: edge
-      KC_LOG_LEVEL: DEBUG
+      KC_PROXY_HEADERS: xforwarded #forwarded
     labels:
       - "traefik.enable=true"
 
@@ -34,8 +33,8 @@ services:
       - "traefik.http.routers.auth-api-secure.rule=Host(`auth.thiagosol.com`)"
       - "traefik.http.routers.auth-api-secure.tls=true"
       - "traefik.http.routers.auth-api-secure.middlewares=keycloak-headers@docker"
-      - "traefik.http.routers.auth-api-secure.service=auth"
-      - "traefik.http.services.auth.loadbalancer.server.port=8080"
+      - "traefik.http.routers.auth-api-secure.service=auth-api-secure"
+      - "traefik.http.services.auth-api-secure.loadbalancer.server.port=8080"
 
       # Middleware que força https pro Keycloak
       - "traefik.http.middlewares.keycloak-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
