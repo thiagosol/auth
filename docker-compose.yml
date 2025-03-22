@@ -29,6 +29,8 @@ services:
       - "traefik.http.routers.auth-api-secure.tls=true"
       - "traefik.http.routers.auth-api-secure.service=auth-api-secure"
       - "traefik.http.services.auth-api-secure.loadbalancer.server.port=8080"
+      - "traefik.http.middlewares.keycloak-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.auth-api-secure.middlewares=keycloak-headers@docker"
       - "traefik.docker.network=external-sol-apis"
     volumes:
       - keycloak_data:/opt/keycloak/data
