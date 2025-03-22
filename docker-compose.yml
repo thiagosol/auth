@@ -12,16 +12,14 @@ services:
       KC_DB_USERNAME: ${DB_POSTGRES_USER}
       KC_DB_PASSWORD: ${DB_POSTGRES_PASS}
       KC_HOSTNAME: auth.thiagosol.com
-      KC_HOSTNAME_STRICT: false
-      #KC_HOSTNAME_STRICT_HTTPS: true
-      KC_PROXY_HEADERS: forwarded
       KC_BOOTSTRAP_ADMIN_USERNAME: ${AUTH_USER}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${AUTH_PASS}
       KC_CACHE: local
+      KC_PROXY_HEADERS: forwarded
+      KC_HOSTNAME_STRICT: true
+      KC_HOSTNAME_STRICT_HTTPS: true
       KC_HTTP_ENABLED: true
-      #KC_HTTPS_ENABLED: false
-      #KC_PROXY: edge
-      KC_PROXY_ADDRESS_FORWARDING: true
+      KC_HTTPS_ENABLED: false
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.auth-api.entrypoints=http"
