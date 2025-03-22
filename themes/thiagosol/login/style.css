@@ -5,6 +5,12 @@
     --input-background: #f5f5f5;
     --input-border: #dddddd;
     --button-hover: #357abd;
+    --link-color: #4a90e2;
+    --link-hover: #357abd;
+    --checkbox-color: #4a90e2;
+    --checkbox-border: #dddddd;
+    --error-color: #e74c3c;
+    --error-background: #fde8e8;
 }
 
 [data-theme="dark"] {
@@ -14,6 +20,12 @@
     --input-background: #2d2d2d;
     --input-border: #404040;
     --button-hover: #90caf9;
+    --link-color: #64b5f6;
+    --link-hover: #90caf9;
+    --checkbox-color: #64b5f6;
+    --checkbox-border: #404040;
+    --error-color: #ff6b6b;
+    --error-background: #2d1f1f;
 }
 
 * {
@@ -86,6 +98,70 @@ button:hover {
     background-color: var(--button-hover);
 }
 
+/* Estilos para o checkbox "Lembrar-me" */
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: var(--checkbox-color);
+}
+
+.checkbox-label {
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+/* Estilos para os links */
+.links-container {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.link {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.link:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* Estilos para a página de erro */
+.error-message {
+    background-color: var(--error-background);
+    color: var(--error-color);
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.error-message p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
 @media (max-width: 480px) {
     .login-container {
         padding: 1.5rem;
@@ -99,6 +175,22 @@ button:hover {
 
     input, button {
         padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .checkbox-label {
+        font-size: 0.9rem;
+    }
+
+    .link {
+        font-size: 0.9rem;
+    }
+
+    .error-message {
+        padding: 0.8rem;
+    }
+
+    .error-message p {
         font-size: 0.95rem;
     }
 }

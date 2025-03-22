@@ -13,21 +13,25 @@
             <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
             <input type="password" name="password" placeholder="Senha" required>
             <input type="hidden" name="credentialId" value="${auth.credentialId!}">
-            <#if realm.rememberMe && !(auth.showUsername?boolean)>
-            <label>
-              <input type="checkbox" name="rememberMe" <#if auth.rememberMe??>checked</#if>>
-              Lembrar-me
-            </label>
+            <#if realm.rememberMe && !auth.showUsername()>
+            <div class="remember-me">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="rememberMe" <#if auth.rememberMe??>checked</#if>>
+                    <span class="checkbox-label">Lembrar-me</span>
+                </label>
+            </div>
             </#if>
             <button type="submit">Entrar</button>
         </form>
-        <#if realm.registrationAllowed>
-        <p><a href="${url.registrationUrl}">Criar conta</a></p>
-        </#if>
+        <div class="links-container">
+            <#if realm.registrationAllowed>
+            <a href="${url.registrationUrl}" class="link">Criar conta</a>
+            </#if>
 
-        <#if realm.resetPasswordAllowed>
-        <p><a href="${url.loginResetCredentialsUrl}">Esqueci a senha</a></p>
-        </#if>
+            <#if realm.resetPasswordAllowed>
+            <a href="${url.loginResetCredentialsUrl}" class="link">Esqueci a senha</a>
+            </#if>
+        </div>
     </div>
     <script>
         const params = new URLSearchParams(window.location.search);
