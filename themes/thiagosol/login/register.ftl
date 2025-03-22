@@ -9,11 +9,11 @@
 <body>
     <div class="login-container">
         <h1 id="service-title">Criar Conta</h1>
-        <div class="error-message">
-            <#if message?has_content>
+        <#if message?has_content>
+            <div class="error-message">
                 <p>${message.summary}</p>
-            </#if>
-        </div>
+            </div>
+        </#if>
         <form action="${url.registrationAction}" method="post">
             <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
             <input type="text" name="firstName" placeholder="Nome" required>

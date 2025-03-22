@@ -9,11 +9,11 @@
 <body>
     <div class="login-container">
         <h1 id="service-title">Redefinir Senha</h1>
-        <div class="info-message">
-            <#if message?has_content>
+        <#if message?has_content>
+            <div class="error-message">
                 <p>${message.summary}</p>
-            </#if>
-        </div>
+            </div>
+        </#if>
         <form action="${url.loginResetCredentialsUrl}" method="post">
             <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
             <button type="submit">Enviar instruções</button>
@@ -30,7 +30,7 @@
         document.body.setAttribute("data-theme", theme);
 
         if (serviceName) {
-            document.getElementById("service-title").innerText = "Redefinir Senha - " + serviceName;
+            document.getElementById("service-title").innerText = `Redefinir Senha - ${serviceName}`;
         }
 
         const loginLink = document.getElementById("login-link");
