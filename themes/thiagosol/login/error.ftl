@@ -39,11 +39,11 @@
         const loginLink = document.getElementById("login-link");
 
         if (clientLink) {
-            clientLink.href = clientLink.href + "&theme=" + theme;
+            clientLink.href = clientLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
         }
 
         if (loginLink) {
-            loginLink.href = loginLink.href + "&theme=" + theme;
+            loginLink.href = loginLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
         }
     </script>
 </body>

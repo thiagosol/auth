@@ -9,8 +9,11 @@
 <body>
     <div class="login-container">
         <h1 id="service-title">Criar Conta</h1>
-        <div class="info-message">
+        <div class="error-message">
             <#if message?has_content>
+                <p>${message.summary}</p>
+            </#if>
+            <#if displayMessage && message?has_content>
                 <p>${message.summary}</p>
             </#if>
         </div>
@@ -43,7 +46,13 @@
 
         const loginLink = document.getElementById("login-link");
         if (loginLink) {
-            loginLink.href = loginLink.href + "&theme=" + theme;
+            loginLink.href = loginLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
+        }
+
+        // Adiciona os parâmetros na action do form
+        const form = document.querySelector('form');
+        if (form) {
+            form.action = form.action + "&theme=" + theme + "&serviceName=" + serviceName;
         }
 
         <#if recaptchaRequired??>

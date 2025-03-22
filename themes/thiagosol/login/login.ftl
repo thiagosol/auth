@@ -9,6 +9,14 @@
 <body>
     <div class="login-container">
         <h1 id="service-title">Entrar</h1>
+        <div class="error-message">
+            <#if message?has_content>
+                <p>${message.summary}</p>
+            </#if>
+            <#if displayMessage && message?has_content>
+                <p>${message.summary}</p>
+            </#if>
+        </div>
         <form action="${url.loginAction}" method="post">
             <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
             <input type="password" name="password" placeholder="Senha" required>
@@ -48,11 +56,17 @@
         const resetLink = document.getElementById("reset-link");
 
         if (registerLink) {
-            registerLink.href = registerLink.href + "&theme=" + theme;
+            registerLink.href = registerLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
         }
 
         if (resetLink) {
-            resetLink.href = resetLink.href + "&theme=" + theme;
+            resetLink.href = resetLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
+        }
+
+        // Adiciona os parâmetros na action do form
+        const form = document.querySelector('form');
+        if (form) {
+            form.action = form.action + "&theme=" + theme + "&serviceName=" + serviceName;
         }
     </script>
 </body>
