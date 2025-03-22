@@ -3,6 +3,7 @@ version: '3.8'
 services:
   auth:
     image: quay.io/keycloak/keycloak:26.1
+    command: start
     restart: always
     container_name: auth
     environment:
