@@ -38,15 +38,12 @@
         const serviceName = params.get("serviceName");
         const theme = params.get("theme") || "light";
 
-        // Aplica o tema
         document.body.setAttribute("data-theme", theme);
 
-        // Atualiza o título se houver um serviceName
         if (serviceName) {
             document.getElementById("service-title").innerText = serviceName;
         }
 
-        // Adiciona o parâmetro theme nos links
         const registerLink = document.getElementById("register-link");
         const resetLink = document.getElementById("reset-link");
 

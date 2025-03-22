@@ -35,21 +35,17 @@
         const serviceName = params.get("serviceName");
         const theme = params.get("theme") || "light";
 
-        // Aplica o tema
         document.body.setAttribute("data-theme", theme);
 
-        // Atualiza o título se houver um serviceName
         if (serviceName) {
             document.getElementById("service-title").innerText = "Criar Conta - " + serviceName;
         }
 
-        // Adiciona o parâmetro theme no link
         const loginLink = document.getElementById("login-link");
         if (loginLink) {
             loginLink.href = loginLink.href + "&theme=" + theme;
         }
 
-        // Carrega o reCAPTCHA se necessário
         <#if recaptchaRequired??>
             const script = document.createElement('script');
             script.src = 'https://www.google.com/recaptcha/api.js';
