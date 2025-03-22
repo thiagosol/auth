@@ -20,29 +20,22 @@ services:
       KC_HTTP_ENABLED: true
       KC_HTTPS_ENABLED: false
       KC_PROXY: edge
-      KC_PROXY_HEADERS: xforwarded #forwarded
+      KC_PROXY_HEADERS: xforwarded
     labels:
       - "traefik.enable=true"
-
-      # HTTP
       - "traefik.http.routers.auth-api.entrypoints=http"
       - "traefik.http.routers.auth-api.rule=Host(`auth.thiagosol.com`)"
-
-      # HTTPS
       - "traefik.http.routers.auth-api-secure.entrypoints=https"
       - "traefik.http.routers.auth-api-secure.rule=Host(`auth.thiagosol.com`)"
       - "traefik.http.routers.auth-api-secure.tls=true"
       - "traefik.http.routers.auth-api-secure.middlewares=keycloak-headers@docker"
       - "traefik.http.routers.auth-api-secure.service=auth-api-secure"
       - "traefik.http.services.auth-api-secure.loadbalancer.server.port=8080"
-
-      # Middleware que força https pro Keycloak
       - "traefik.http.middlewares.keycloak-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
-
-      # Network
       - "traefik.docker.network=external-sol-apis"
     volumes:
       - keycloak_data:/opt/keycloak/data
+      - ./themes:/opt/keycloak/themes
     networks:
       - external-sol-apis
       - logging-network
