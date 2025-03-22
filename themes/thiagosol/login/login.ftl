@@ -60,10 +60,23 @@
             resetLink.href = resetLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
         }
 
-        // Adiciona os parâmetros na action do form
         const form = document.querySelector('form');
         if (form) {
             form.action = form.action + "&theme=" + theme + "&serviceName=" + serviceName;
+            
+            const themeInput = document.createElement('input');
+            themeInput.type = 'hidden';
+            themeInput.name = 'theme';
+            themeInput.value = theme;
+            form.appendChild(themeInput);
+
+            if (serviceName) {
+                const serviceNameInput = document.createElement('input');
+                serviceNameInput.type = 'hidden';
+                serviceNameInput.name = 'serviceName';
+                serviceNameInput.value = serviceName;
+                form.appendChild(serviceNameInput);
+            }
         }
     </script>
 </body>

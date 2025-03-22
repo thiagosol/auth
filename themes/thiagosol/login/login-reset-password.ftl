@@ -30,7 +30,7 @@
         document.body.setAttribute("data-theme", theme);
 
         if (serviceName) {
-            document.getElementById("service-title").innerText = `Redefinir Senha - ${serviceName}`;
+            document.getElementById("service-title").innerText = "Redefinir Senha - " + serviceName;
         }
 
         const loginLink = document.getElementById("login-link");
@@ -42,6 +42,21 @@
         const form = document.querySelector('form');
         if (form) {
             form.action = form.action + "&theme=" + theme + "&serviceName=" + serviceName;
+            
+            // Adiciona campos hidden para theme e serviceName
+            const themeInput = document.createElement('input');
+            themeInput.type = 'hidden';
+            themeInput.name = 'theme';
+            themeInput.value = theme;
+            form.appendChild(themeInput);
+
+            if (serviceName) {
+                const serviceNameInput = document.createElement('input');
+                serviceNameInput.type = 'hidden';
+                serviceNameInput.name = 'serviceName';
+                serviceNameInput.value = serviceName;
+                form.appendChild(serviceNameInput);
+            }
         }
     </script>
 </body>
