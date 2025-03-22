@@ -38,7 +38,7 @@
         // Adiciona o parâmetro theme no link
         const loginLink = document.getElementById("login-link");
         if (loginLink) {
-            loginLink.href = loginLink.href + "?theme=" + theme;
+            loginLink.href = loginLink.href + "&theme=" + theme;
         }
     </script>
 </body>

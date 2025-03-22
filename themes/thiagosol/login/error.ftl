@@ -42,11 +42,11 @@
         const loginLink = document.getElementById("login-link");
 
         if (clientLink) {
-            clientLink.href = clientLink.href + "?theme=" + theme;
+            clientLink.href = clientLink.href + "&theme=" + theme;
         }
 
         if (loginLink) {
-            loginLink.href = loginLink.href + "?theme=" + theme;
+            loginLink.href = loginLink.href + "&theme=" + theme;
         }
     </script>
 </body>

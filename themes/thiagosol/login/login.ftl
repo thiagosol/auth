@@ -51,11 +51,11 @@
         const resetLink = document.getElementById("reset-link");
 
         if (registerLink) {
-            registerLink.href = registerLink.href + "?theme=" + theme;
+            registerLink.href = registerLink.href + "&theme=" + theme;
         }
 
         if (resetLink) {
-            resetLink.href = resetLink.href + "?theme=" + theme;
+            resetLink.href = resetLink.href + "&theme=" + theme;
         }
     </script>
 </body>

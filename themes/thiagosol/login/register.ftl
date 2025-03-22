@@ -9,28 +9,25 @@
 <body>
     <div class="login-container">
         <h1 id="service-title">Criar Conta</h1>
-        <form action="${url.registrationAction}" method="post">
-            <#if !(register.formData.singleUsername??)>
-                <input type="text" name="username" placeholder="Nome de usuário" autofocus required>
+        <div class="info-message">
+            <#if message?has_content>
+                <p>${message.summary}</p>
             </#if>
+        </div>
+        <form action="${url.registrationAction}" method="post">
+            <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
             <input type="text" name="firstName" placeholder="Nome" required>
             <input type="text" name="lastName" placeholder="Sobrenome" required>
             <input type="email" name="email" placeholder="Email" required>
-            <#if !(register.formData.password??)>
-                <input type="password" name="password" placeholder="Senha" required>
-                <input type="password" name="password-confirm" placeholder="Confirmar senha" required>
-            </#if>
-
+            <input type="password" name="password" placeholder="Senha" required>
+            <input type="password" name="password-confirm" placeholder="Confirmar senha" required>
             <#if recaptchaRequired??>
-                <div class="form-group">
-                    <div class="g-recaptcha" data-size="compact" data-sitekey="${recaptchaSiteKey}"></div>
-                </div>
+                <div class="g-recaptcha" data-sitekey="${recaptchaSiteKey}"></div>
             </#if>
-
-            <button type="submit">Criar Conta</button>
+            <button type="submit">Criar conta</button>
         </form>
         <div class="links-container">
-            <a href="${url.loginUrl}" class="link">Já tem uma conta? Faça login</a>
+            <a href="${url.loginUrl}" class="link" id="login-link">Voltar para login</a>
         </div>
     </div>
     <script>
@@ -45,9 +42,19 @@
         if (serviceName) {
             document.getElementById("service-title").innerText = "Criar Conta - " + serviceName;
         }
+
+        // Adiciona o parâmetro theme no link
+        const loginLink = document.getElementById("login-link");
+        if (loginLink) {
+            loginLink.href = loginLink.href + "&theme=" + theme;
+        }
+
+        // Carrega o reCAPTCHA se necessário
+        <#if recaptchaRequired??>
+            const script = document.createElement('script');
+            script.src = 'https://www.google.com/recaptcha/api.js';
+            document.head.appendChild(script);
+        </#if>
     </script>
-    <#if recaptchaRequired??>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    </#if>
 </body>
 </html> 
