@@ -11,6 +11,8 @@
     --checkbox-border: #dddddd;
     --error-color: #e74c3c;
     --error-background: #fde8e8;
+    --info-color: #2ecc71;
+    --info-background: #e8f8f0;
 }
 
 [data-theme="dark"] {
@@ -26,6 +28,8 @@
     --checkbox-border: #404040;
     --error-color: #ff6b6b;
     --error-background: #2d1f1f;
+    --info-color: #2ecc71;
+    --info-background: #1a2d1f;
 }
 
 * {
@@ -53,6 +57,8 @@ body {
     width: 90%;
     max-width: 400px;
     margin: 1rem;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 h1 {
@@ -162,6 +168,29 @@ button:hover {
     line-height: 1.5;
 }
 
+/* Estilos para mensagens de informação */
+.info-message {
+    background-color: var(--info-background);
+    color: var(--info-color);
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.info-message p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Estilos para o reCAPTCHA */
+.form-group {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 480px) {
     .login-container {
         padding: 1.5rem;
@@ -191,6 +220,14 @@ button:hover {
     }
 
     .error-message p {
+        font-size: 0.95rem;
+    }
+
+    .info-message {
+        padding: 0.8rem;
+    }
+
+    .info-message p {
         font-size: 0.95rem;
     }
 } 
