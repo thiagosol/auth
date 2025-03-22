@@ -43,7 +43,7 @@
 
         // Atualiza o título se houver um serviceName
         if (serviceName) {
-            document.getElementById("service-title").innerText = `Criar Conta - ${serviceName}`;
+            document.getElementById("service-title").innerText = "Criar Conta - " + serviceName;
         }
     </script>
     <#if recaptchaRequired??>

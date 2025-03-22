@@ -32,7 +32,7 @@
 
         // Atualiza o título se houver um serviceName
         if (serviceName) {
-            document.getElementById("service-title").innerText = `Recuperar Senha - ${serviceName}`;
+            document.getElementById("service-title").innerText = "Recuperar Senha - " + serviceName;
         }
     </script>
 </body>
