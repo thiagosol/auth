@@ -16,7 +16,7 @@ services:
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${AUTH_PASS}
       KC_CACHE: local
       KC_PROXY_HEADERS: forwarded
-      KC_HOSTNAME_STRICT: true
+      KC_HOSTNAME_STRICT: false
       KC_HOSTNAME_STRICT_HTTPS: false
       KC_HTTP_ENABLED: true
       KC_HTTPS_ENABLED: false
