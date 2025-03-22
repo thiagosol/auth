@@ -13,8 +13,8 @@ services:
       KC_DB_PASSWORD: ${DB_POSTGRES_PASS}
       KC_HOSTNAME: auth.thiagosol.com
       KC_PROXY: edge
-      KEYCLOAK_ADMIN: ${AUTH_USER}
-      KEYCLOAK_ADMIN_PASSWORD: ${AUTH_PASS}
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${AUTH_USER}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${AUTH_PASS}
       KC_CACHE: local
       KC_HTTP_ENABLED: true
       KC_HTTPS_ENABLED: false
