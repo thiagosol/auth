@@ -2,8 +2,7 @@ version: '3.8'
 
 services:
   auth:
-    image: quay.io/keycloak/keycloak:24.0.3
-    command: start --optimized --auto-build
+    image: quay.io/keycloak/keycloak:26.1
     restart: always
     container_name: auth
     environment:
