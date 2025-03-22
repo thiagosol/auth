@@ -3,10 +3,18 @@ version: '3.8'
 services:
   auth:
     image: quay.io/keycloak/keycloak:24.0.3
-    command: start-dev
+    command: start --optimized
     restart: always
     container_name: auth
     environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: thiagosol.com
+      KC_DB_URL_PORT: 5432
+      KC_DB_URL_DATABASE: auth-api
+      KC_DB_USERNAME: ${DB_POSTGRES_USER}
+      KC_DB_PASSWORD: ${DB_POSTGRES_PASS}
+      KC_HOSTNAME: auth.thiagosol.com
+      KC_PROXY: edge
       KEYCLOAK_ADMIN: ${AUTH_USER}
       KEYCLOAK_ADMIN_PASSWORD: ${AUTH_PASS}
     labels:
