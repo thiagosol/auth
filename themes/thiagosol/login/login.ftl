@@ -13,9 +13,6 @@
             <#if message?has_content>
                 <p>${message.summary}</p>
             </#if>
-            <#if displayMessage && message?has_content>
-                <p>${message.summary}</p>
-            </#if>
         </div>
         <form action="${url.loginAction}" method="post">
             <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
