@@ -12,6 +12,7 @@ services:
       KC_DB_USERNAME: ${DB_POSTGRES_USER}
       KC_DB_PASSWORD: ${DB_POSTGRES_PASS}
       KC_HOSTNAME: auth.thiagosol.com
+      KC_PROXY: edge
       KC_BOOTSTRAP_ADMIN_USERNAME: ${AUTH_USER}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${AUTH_PASS}
       KC_CACHE: local
@@ -22,24 +23,15 @@ services:
       KC_HTTPS_ENABLED: false
     labels:
       - "traefik.enable=true"
-
-      # HTTP
-      - "traefik.http.routers.auth-api.entrypoints=http"
-      - "traefik.http.routers.auth-api.rule=Host(`auth.thiagosol.com`)"
-
-      # HTTPS
       - "traefik.http.routers.auth-api-secure.entrypoints=https"
       - "traefik.http.routers.auth-api-secure.rule=Host(`auth.thiagosol.com`)"
       - "traefik.http.routers.auth-api-secure.tls=true"
-      - "traefik.http.routers.auth-api-secure.middlewares=keycloak-headers@docker"
-      - "traefik.http.routers.auth-api-secure.service=auth"
-      - "traefik.http.services.auth.loadbalancer.server.port=8080"
-
-      # Middleware que força https pro Keycloak
+      - "traefik.http.routers.auth-api-secure.service=auth-api-secure"
+      - "traefik.http.services.auth-api-secure.loadbalancer.server.port=8080"
       - "traefik.http.middlewares.keycloak-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
-
-      # Network
-      - "traefik.docker.network=external-sol-apis"
+      - "traefik.http.middlewares.keycloak-headers.headers.customrequestheaders.X-Forwarded-Host=auth.thiagosol.com"
+      - "traefik.http.middlewares.keycloak-headers.headers.customrequestheaders.X-Forwarded-Port=443"
+      - "traefik.http.routers.auth-api-secure.middlewares=keycloak-headers@docker"
     volumes:
       - keycloak_data:/opt/keycloak/data
     networks:
