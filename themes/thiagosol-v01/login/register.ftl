@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redefinir Senha</title>
+    <title>${msg("registerTitle")}</title>
     <link rel="stylesheet" href="${url.resourcesPath}/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="login-container">
-        <h1 id="service-title">Redefinir Senha</h1>
+        <h1 id="service-title">${msg("registerTitle")}</h1>
         <#if message?has_content>
             <div class="${message.type}-message">
                 <p>${message.summary}</p>
             </div>
         </#if>
-        <form action="${url.loginAction}" method="post">
+        <form action="${url.registrationAction}" method="post">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="${msg('username')}" autofocus required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="firstName" placeholder="${msg('firstName')}" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="lastName" placeholder="${msg('lastName')}" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="${msg('email')}" required>
+            </div>
             <div class="form-group">
                 <div class="password-container">
-                    <input type="password" name="password-new" placeholder="Nova senha" autofocus required>
+                    <input type="password" name="password" placeholder="${msg('password')}" required>
                     <button type="button" class="toggle-password" onclick="togglePassword(this)">
                         <span class="material-icons">visibility</span>
                     </button>
@@ -26,16 +38,19 @@
             </div>
             <div class="form-group">
                 <div class="password-container">
-                    <input type="password" name="password-confirm" placeholder="Confirmar nova senha" required>
+                    <input type="password" name="password-confirm" placeholder="${msg('passwordConfirm')}" required>
                     <button type="button" class="toggle-password" onclick="togglePassword(this)">
                         <span class="material-icons">visibility</span>
                     </button>
                 </div>
             </div>
-            <button type="submit">Alterar senha</button>
+            <#if recaptchaRequired??>
+                <div class="g-recaptcha" data-sitekey="${recaptchaSiteKey}"></div>
+            </#if>
+            <button type="submit">${msg("doRegister")}</button>
         </form>
         <div class="links-container">
-            <a href="${url.loginUrl}" class="link" id="login-link">Voltar para login</a>
+            <a href="${url.loginUrl}" class="link" id="login-link">${msg("backToLogin")}</a>
         </div>
     </div>
     <script>
@@ -60,6 +75,12 @@
         if (form) {
             form.action = form.action + "&theme=" + theme;
         }
+
+        <#if recaptchaRequired??>
+            const script = document.createElement('script');
+            script.src = 'https://www.google.com/recaptcha/api.js';
+            document.head.appendChild(script);
+        </#if>
 
         function togglePassword(button) {
             const input = button.previousElementSibling;

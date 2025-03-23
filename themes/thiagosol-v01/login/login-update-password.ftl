@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>${msg("updatePasswordTitle")}</title>
     <link rel="stylesheet" href="${url.resourcesPath}/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="login-container">
-        <h1 id="service-title">Entrar</h1>
+        <h1 id="service-title">${msg("updatePasswordTitle")}</h1>
         <#if message?has_content>
             <div class="${message.type}-message">
                 <p>${message.summary}</p>
@@ -17,35 +17,25 @@
         </#if>
         <form action="${url.loginAction}" method="post">
             <div class="form-group">
-                <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
-            </div>
-            <div class="form-group">
                 <div class="password-container">
-                    <input type="password" name="password" placeholder="Senha" required>
+                    <input type="password" name="password-new" placeholder="${msg('passwordNew')}" autofocus required>
                     <button type="button" class="toggle-password" onclick="togglePassword(this)">
                         <span class="material-icons">visibility</span>
                     </button>
                 </div>
             </div>
-            <input type="hidden" name="credentialId" value="${auth.credentialId!}">
-            <#if realm.rememberMe>
-            <div class="remember-me">
-                <label class="checkbox-container">
-                    <input type="checkbox" name="rememberMe" <#if auth.rememberMe??>checked</#if>>
-                    <span class="checkbox-label">Lembrar-me</span>
-                </label>
+            <div class="form-group">
+                <div class="password-container">
+                    <input type="password" name="password-confirm" placeholder="${msg('passwordConfirm')}" required>
+                    <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                        <span class="material-icons">visibility</span>
+                    </button>
+                </div>
             </div>
-            </#if>
-            <button type="submit">Entrar</button>
+            <button type="submit">${msg("doSubmit")}</button>
         </form>
         <div class="links-container">
-            <#if realm.registrationAllowed>
-            <a href="${url.registrationUrl}" class="link" id="register-link">Criar conta</a>
-            </#if>
-
-            <#if realm.resetPasswordAllowed>
-            <a href="${url.loginResetCredentialsUrl}" class="link" id="reset-link">Esqueci a senha</a>
-            </#if>
+            <a href="${url.loginUrl}" class="link" id="login-link">Voltar para login</a>
         </div>
     </div>
     <script>
@@ -61,15 +51,9 @@
         theme = theme || "light";
         document.body.setAttribute("data-theme", theme);
 
-        const registerLink = document.getElementById("register-link");
-        const resetLink = document.getElementById("reset-link");
-
-        if (registerLink) {
-            registerLink.href = registerLink.href + "&theme=" + theme;
-        }
-
-        if (resetLink) {
-            resetLink.href = resetLink.href + "&theme=" + theme;
+        const loginLink = document.getElementById("login-link");
+        if (loginLink) {
+            loginLink.href = loginLink.href + "&theme=" + theme;
         }
 
         const form = document.querySelector('form');
@@ -90,4 +74,4 @@
         }
     </script>
 </body>
-</html>
+</html> 

@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redefinir Senha</title>
+    <title>${msg("emailForgotTitle")}</title>
     <link rel="stylesheet" href="${url.resourcesPath}/css/style.css">
 </head>
 <body>
     <div class="login-container">
-        <h1 id="service-title">Redefinir Senha</h1>
+        <h1 id="service-title">${msg("emailForgotTitle")}</h1>
         <#if message?has_content>
             <div class="${message.type}-message">
                 <p>${message.summary}</p>
             </div>
         </#if>
         <form id="kc-reset-password-form" action="${url.loginAction}" method="post">
-            <input type="text" id="username" name="username" placeholder="Email ou usuário" 
+            <input type="text" id="username" name="username" placeholder="<#if !realm.loginWithEmailAllowed>${msg('username')}<#elseif !realm.registrationEmailAsUsername>${msg('usernameOrEmail')}<#else>${msg('email')}</#if>" 
                 autofocus
                 <#if messagesPerField.existsError('username')>aria-invalid="true"</#if>
             />
@@ -24,10 +24,10 @@
                     ${kcSanitize(messagesPerField.get('username'))?no_esc}
                 </span>
             </#if>
-            <button type="submit">Enviar instruções</button>
+            <button type="submit">${msg("doSubmit")}</button>
         </form>
         <div class="links-container">
-            <a href="${url.loginUrl}" class="link" id="login-link">Voltar para login</a>
+            <a href="${url.loginUrl}" class="link" id="login-link">${msg("backToLogin")}</a>
         </div>
     </div>
     <script>

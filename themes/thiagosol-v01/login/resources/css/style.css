@@ -30,6 +30,23 @@
     --error-background: #2d1f1f;
     --info-color: #2ecc71;
     --info-background: #1a2d1f;
+    --hover-bg: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+    --error-bg: #ffe6e6;
+    --error-color: #dc3545;
+    --success-bg: #e8f5e9;
+    --success-color: #28a745;
+    --warning-bg: #fff3cd;
+    --warning-color: #ffc107;
+    --info-bg: #e3f2fd;
+    --info-color: #0d6efd;
+    --border-color: #ddd;
+    --input-bg: #fff;
+    --input-background: #ffffff;
+    --input-border: #dddddd;
+    --hover-bg: rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -270,34 +287,89 @@ button:hover {
     margin-bottom: 20px;
 }
 
-[data-theme="light"] {
-    --error-bg: #ffe6e6;
-    --error-color: #dc3545;
-    --success-bg: #e8f5e9;
-    --success-color: #28a745;
-    --warning-bg: #fff3cd;
-    --warning-color: #ffc107;
-    --info-bg: #e3f2fd;
-    --info-color: #0d6efd;
-    --border-color: #ddd;
-    --input-bg: #fff;
-    --input-background: #ffffff;
-    --input-border: #dddddd;
+/* Separador para login social */
+.social-providers {
+    margin-top: 2rem;
+    width: 100%;
 }
 
-[data-theme="dark"] {
-    --error-bg: #350d0d;
-    --error-color: #ff4d4d;
-    --success-bg: #0d350d;
-    --success-color: #4caf50;
-    --warning-bg: #352a0d;
-    --warning-color: #ffeb3b;
-    --info-bg: #0d2435;
-    --info-color: #2196f3;
-    --border-color: #444;
-    --input-bg: #2d2d2d;
-    --input-background: #2d2d2d;
-    --input-border: #444444;
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.separator span {
+    padding: 0 1rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* Lista de provedores sociais */
+.providers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background: var(--input-background);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.social-button:hover {
+    background: var(--hover-bg);
+}
+
+.social-button i {
+    font-size: 1.2rem;
+}
+
+/* Estilos específicos para cada provedor */
+.social-button.google {
+    color: #DB4437;
+    border-color: #DB4437;
+}
+
+.social-button.google:hover {
+    background: rgba(219, 68, 55, 0.1);
+}
+
+.social-button.facebook {
+    color: #4267B2;
+    border-color: #4267B2;
+}
+
+.social-button.facebook:hover {
+    background: rgba(66, 103, 178, 0.1);
+}
+
+.social-button.github {
+    color: #333;
+    border-color: #333;
+}
+
+.social-button.github:hover {
+    background: rgba(51, 51, 51, 0.1);
 }
 
 @media (max-width: 480px) {
