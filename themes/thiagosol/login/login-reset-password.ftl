@@ -14,9 +14,21 @@
                 <p>${message.summary}</p>
             </div>
         </#if>
-        <form action="${url.loginResetCredentialsUrl}" method="post">
-            <input type="text" id="username" name="username" placeholder="Email ou usuário" autofocus required>
-            <button type="submit">Enviar instruções</button>
+        <form id="kc-reset-password-form" action="${url.loginAction}" method="post">
+            <div class="form-group">
+                <input type="text" id="username" name="username" class="form-control" placeholder="Email ou usuário"
+                    autofocus
+                    aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"
+                />
+                <#if messagesPerField.existsError('username')>
+                    <span id="input-error-username" class="error-message" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('username'))?no_esc}
+                    </span>
+                </#if>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Enviar instruções</button>
+            </div>
         </form>
         <div class="links-container">
             <a href="${url.loginUrl}" class="link" id="login-link">Voltar para login</a>
