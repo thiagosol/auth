@@ -25,49 +25,24 @@
     <script>
         const params = new URLSearchParams(window.location.search);
         let theme = params.get("theme");
-        let serviceName = params.get("serviceName");
 
-        // Se não veio na URL, tenta pegar do form data (POST)
-        if (!theme) {
-            const formData = new FormData(document.querySelector('form'));
-            theme = formData.get('theme');
-        }
-        if (!serviceName) {
-            const formData = new FormData(document.querySelector('form'));
-            serviceName = formData.get('serviceName');
+        if (theme) {
+            localStorage.setItem('kc_theme', theme);
+        } else {
+            theme = localStorage.getItem('kc_theme');
         }
 
-        // Fallback para light se não encontrou em nenhum lugar
         theme = theme || "light";
-
         document.body.setAttribute("data-theme", theme);
-
-        if (serviceName) {
-            document.getElementById("service-title").innerText = "Redefinir Senha - " + serviceName;
-        }
 
         const loginLink = document.getElementById("login-link");
         if (loginLink) {
-            loginLink.href = loginLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
+            loginLink.href = loginLink.href + "&theme=" + theme;
         }
 
         const form = document.querySelector('form');
         if (form) {
-            form.action = form.action + "&theme=" + theme + "&serviceName=" + serviceName;
-            
-            const themeInput = document.createElement('input');
-            themeInput.type = 'hidden';
-            themeInput.name = 'theme';
-            themeInput.value = theme;
-            form.appendChild(themeInput);
-
-            if (serviceName) {
-                const serviceNameInput = document.createElement('input');
-                serviceNameInput.type = 'hidden';
-                serviceNameInput.name = 'serviceName';
-                serviceNameInput.value = serviceName;
-                form.appendChild(serviceNameInput);
-            }
+            form.action = form.action + "&theme=" + theme;
         }
     </script>
 </body>

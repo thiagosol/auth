@@ -41,52 +41,30 @@
     <script>
         const params = new URLSearchParams(window.location.search);
         let theme = params.get("theme");
-        let serviceName = params.get("serviceName");
 
-        if (!theme) {
-            const formData = new FormData(document.querySelector('form'));
-            theme = formData.get('theme');
+        if (theme) {
+            localStorage.setItem('kc_theme', theme);
+        } else {
+            theme = localStorage.getItem('kc_theme');
         }
-        if (!serviceName) {
-            const formData = new FormData(document.querySelector('form'));
-            serviceName = formData.get('serviceName');
-        }
+
         theme = theme || "light";
-
         document.body.setAttribute("data-theme", theme);
-
-        if (serviceName) {
-            document.getElementById("service-title").innerText = serviceName;
-        }
 
         const registerLink = document.getElementById("register-link");
         const resetLink = document.getElementById("reset-link");
 
         if (registerLink) {
-            registerLink.href = registerLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
+            registerLink.href = registerLink.href + "&theme=" + theme;
         }
 
         if (resetLink) {
-            resetLink.href = resetLink.href + "&theme=" + theme + "&serviceName=" + serviceName;
+            resetLink.href = resetLink.href + "&theme=" + theme;
         }
 
         const form = document.querySelector('form');
         if (form) {
-            form.action = form.action + "&theme=" + theme + "&serviceName=" + serviceName;
-            
-            const themeInput = document.createElement('input');
-            themeInput.type = 'hidden';
-            themeInput.name = 'theme';
-            themeInput.value = theme;
-            form.appendChild(themeInput);
-
-            if (serviceName) {
-                const serviceNameInput = document.createElement('input');
-                serviceNameInput.type = 'hidden';
-                serviceNameInput.name = 'serviceName';
-                serviceNameInput.value = serviceName;
-                form.appendChild(serviceNameInput);
-            }
+            form.action = form.action + "&theme=" + theme;
         }
     </script>
 </body>
