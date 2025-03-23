@@ -14,9 +14,10 @@
                 <p>${message.summary}</p>
             </div>
         </#if>
-        <form action="${url.loginResetCredentialsUrl}" method="post">
-            <input type="text" id="username" name="username" placeholder="Email ou usuário" autofocus required>
-            <button type="submit">Enviar instruções</button>
+        <form action="${url.loginAction}" method="post">
+            <input type="password" name="password-new" placeholder="Nova senha" autofocus required>
+            <input type="password" name="password-confirm" placeholder="Confirmar nova senha" required>
+            <button type="submit">Alterar senha</button>
         </form>
         <div class="links-container">
             <a href="${url.loginUrl}" class="link" id="login-link">Voltar para login</a>
