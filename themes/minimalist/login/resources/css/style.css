@@ -1,0 +1,125 @@
+#kc-locale {
+  text-align: right;
+  text-decoration: none;
+}
+
+#kc-locale ul {
+  display: none;
+  list-style: none;
+}
+
+.pf-c-dropdown__menu {
+  position: absolute;
+}
+
+input[name="username"][aria-invalid="true"] {
+  border-color: red;
+}
+
+#input-error {
+  color: red;
+}
+
+.rememberMeContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.rememberMeContainer>input {
+  margin-right: 8px;
+}
+
+label[for="rememberMe"] {
+  color: gray;
+}
+
+#kc-form-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+input[name="login"] {
+  margin-top: 16px;
+}
+
+.cs-title {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cs-locale {
+  padding: 16px 16px 32px 16px !important;
+  text-align: right;
+}
+
+.cs-locale {
+  cursor: pointer;
+}
+
+.cs-locale a {
+  text-decoration: none;
+  color: grey;
+}
+
+.cs-dropdown-menu {
+  border: none;
+}
+
+.cs-forms {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.cs-idp-title {
+  text-align: center;
+  color: gray;
+  margin-bottom: 16px;
+}
+
+.cs-username {
+  display: flex;
+  flex-direction: row;
+}
+
+.cs-username label {
+  margin: 0 8px 32px 0px;
+}
+
+.cs-idp-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.cs-idp-list a {
+  margin-bottom: 16px;
+}
+
+.cs-idp-list a>span:first-child {
+  margin-right: 8px;
+}
+
+.cs-forgot-password-title {
+  text-align: right;
+}
+
+.cs-alert-message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cs-alert-message>i {
+  margin-right: 16px;
+}
+
+.cs-back-to-login {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.cs-email-instruction {
+  margin-top: 16px !important;
+}

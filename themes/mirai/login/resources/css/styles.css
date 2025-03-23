@@ -1,0 +1,204 @@
+/*
+ * (c) 2024 Deltadel. All rights reserved. Contact legal@shuga.co for licensing.
+ */
+
+body > div {
+    max-width: 300px;
+    width: 100%;
+    padding: 100px;
+}
+
+html {
+    box-sizing: border-box;
+    background-color: #1B1B1B;
+    background-image: url(../img/bkgd.svg);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    background-position: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.spinner {
+    background-image: url(../img/spinner.svg);
+    width: 50px;
+    display: block;
+    height: 50px;
+    background-position: center;
+    background-size: cover;
+    color: transparent;
+    margin: 10px auto;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+input:not([type=checkbox]), .btn {
+    background: #2B2B2B;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+    width: calc(100% - 20px);
+    display: inline-block;
+}
+
+input[type=submit], .btn {
+    background: #579BCC;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+
+.checkbox {
+
+}
+
+label {
+    margin-bottom: 5px;
+    display: inline-block;
+    font-style: italic;
+}
+
+button[data-password-toggle] {
+    border: none;
+    background: transparent;
+    color: white;
+    transform: translate(240px, -30px);
+}
+
+button[data-password-toggle]:before {
+    content: "Toggle";
+    opacity: 0.5;
+    cursor: pointer;
+    text-align: right;
+    font-weight: bold;
+}
+
+footer {
+    bottom: 20px;
+    left: 20px;
+    position: fixed;
+    font-size: 18px;
+    opacity: 0.5;
+}
+
+.container > .btn {
+    width: calc(100% - 20px);
+}
+
+@media (max-width: 512px) {
+    body > div {
+        padding: 10px;
+        width: calc(100vw - 20px);
+    }
+
+    body > div > div {
+        width: calc(100vw - 40px);
+    }
+
+    button[data-password-toggle] {
+        transform: translate(calc(100vw - 100px), -30px)
+    }
+}
+
+/*
+ * Below is code used under license. (c) Keycloak, Red Hat.
+ */
+
+div#kc-feedback-wrapper {
+    padding: 1em;
+}
+
+div.feedback-success {
+    background-color: rgba(155,155,255,0.1);
+}
+
+div.feedback-warning {
+    background-color: rgba(255,175,0,0.1);
+}
+
+div.feedback-error {
+    background-color: rgba(255,0,0,0.1);
+}
+
+#input-error, #input-error-username, #input-error-password, .alert-error {
+    color: #CC575D;
+    display: inline-block;
+    margin: 5px 0;
+    position: relative;
+    top: 2px;
+}
+
+a, .kc-login-tooltip {
+    color: #579BCC;
+    text-decoration: none;
+}
+
+.kc-tooltip-text:before {
+    color: "#579BCC";
+    content: "〱";
+    font-weight: bold;
+}
+
+#try-another-way, #kc-select-credential-form > div > button, #cancelWebAuthnAIA, #cancelTOTPBtn, [name='cancel-aia'] {
+    background: #2B2B2B;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+    width: calc(100% - 20px);
+    display: inline-block;
+}
+
+#kc-select-credential-form > div > button {
+    font-weight: normal;
+}
+
+#kc-select-credential-form > div > button > div > div:nth-child(1) {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#social-google {
+    background: #2B2B2B;
+    font-weight: normal;
+}
+
+#authenticateWebAuthnButton, #kc-try-again {
+    width: 100%;
+    background: #579BCC;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#cancelWebAuthnAIA, #cancelTOTPBtn, [name='cancel-aia'] {
+    width: 100%;
+}
