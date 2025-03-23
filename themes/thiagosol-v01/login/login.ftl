@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${msg("loginTitle")}</title>
+    <title>${msg("loginAccountTitle")}</title>
     <link rel="stylesheet" href="${url.resourcesPath}/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="login-container">
-        <h1 id="service-title">${msg("loginTitle")}</h1>
+        <h1 id="service-title">${msg("loginAccountTitle")}</h1>
         <#if message?has_content>
             <div class="${message.type}-message">
                 <p>${message.summary}</p>
@@ -68,10 +68,10 @@
 
         <div class="links-container">
             <#if realm.registrationAllowed>
-                <a href="${url.registrationUrl}" class="link">${msg("doRegister")}</a>
+                <a href="${url.registrationUrl}" class="link">${kcSanitize(msg("doRegister"))}</a>
             </#if>
             <#if realm.resetPasswordAllowed>
-                <a href="${url.loginResetCredentialsUrl}" class="link">${msg("doForgotPassword")}</a>
+                <a href="${url.loginResetCredentialsUrl}" class="link">${kcSanitize(msg("doForgotPassword"))}</a>
             </#if>
         </div>
     </div>

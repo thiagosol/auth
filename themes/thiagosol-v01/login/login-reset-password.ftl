@@ -27,7 +27,7 @@
             <button type="submit">${msg("doSubmit")}</button>
         </form>
         <div class="links-container">
-            <a href="${url.loginUrl}" class="link" id="login-link">${msg("backToLogin")}</a>
+            <a href="${url.loginUrl}" class="link" id="login-link">${kcSanitize(msg("backToLogin"))}</a>
         </div>
     </div>
     <script>
