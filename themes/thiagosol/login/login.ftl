@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="${url.resourcesPath}/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="login-container">
@@ -18,7 +19,9 @@
             <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
             <div class="password-container">
                 <input type="password" name="password" placeholder="Senha" required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                    <span class="material-icons">visibility</span>
+                </button>
             </div>
             <input type="hidden" name="credentialId" value="${auth.credentialId!}">
             <#if realm.rememberMe>
@@ -72,12 +75,13 @@
 
         function togglePassword(button) {
             const input = button.previousElementSibling;
+            const icon = button.querySelector('.material-icons');
             if (input.type === "password") {
                 input.type = "text";
-                button.textContent = "🔒";
+                icon.textContent = "visibility_off";
             } else {
                 input.type = "password";
-                button.textContent = "👁️";
+                icon.textContent = "visibility";
             }
         }
     </script>

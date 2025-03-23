@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redefinir Senha</title>
     <link rel="stylesheet" href="${url.resourcesPath}/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="login-container">
@@ -17,11 +18,15 @@
         <form action="${url.loginAction}" method="post">
             <div class="password-container">
                 <input type="password" name="password-new" placeholder="Nova senha" autofocus required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                    <span class="material-icons">visibility</span>
+                </button>
             </div>
             <div class="password-container">
                 <input type="password" name="password-confirm" placeholder="Confirmar nova senha" required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                    <span class="material-icons">visibility</span>
+                </button>
             </div>
             <button type="submit">Alterar senha</button>
         </form>
@@ -54,12 +59,13 @@
 
         function togglePassword(button) {
             const input = button.previousElementSibling;
+            const icon = button.querySelector('.material-icons');
             if (input.type === "password") {
                 input.type = "text";
-                button.textContent = "🔒";
+                icon.textContent = "visibility_off";
             } else {
                 input.type = "password";
-                button.textContent = "👁️";
+                icon.textContent = "visibility";
             }
         }
     </script>

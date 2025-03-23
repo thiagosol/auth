@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta</title>
     <link rel="stylesheet" href="${url.resourcesPath}/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="login-container">
@@ -21,11 +22,15 @@
             <input type="email" name="email" placeholder="Email" required>
             <div class="password-container">
                 <input type="password" name="password" placeholder="Senha" required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                    <span class="material-icons">visibility</span>
+                </button>
             </div>
             <div class="password-container">
                 <input type="password" name="password-confirm" placeholder="Confirmar senha" required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                    <span class="material-icons">visibility</span>
+                </button>
             </div>
             <#if recaptchaRequired??>
                 <div class="g-recaptcha" data-sitekey="${recaptchaSiteKey}"></div>
@@ -67,12 +72,13 @@
 
         function togglePassword(button) {
             const input = button.previousElementSibling;
+            const icon = button.querySelector('.material-icons');
             if (input.type === "password") {
                 input.type = "text";
-                button.textContent = "🔒";
+                icon.textContent = "visibility_off";
             } else {
                 input.type = "password";
-                button.textContent = "👁️";
+                icon.textContent = "visibility";
             }
         }
     </script>
