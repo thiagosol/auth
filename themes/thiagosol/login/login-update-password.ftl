@@ -16,17 +16,21 @@
             </div>
         </#if>
         <form action="${url.loginAction}" method="post">
-            <div class="password-container">
-                <input type="password" name="password-new" placeholder="Nova senha" autofocus required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">
-                    <span class="material-icons">visibility</span>
-                </button>
+            <div class="form-group">
+                <div class="password-container">
+                    <input type="password" name="password-new" placeholder="Nova senha" autofocus required>
+                    <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                        <span class="material-icons">visibility</span>
+                    </button>
+                </div>
             </div>
-            <div class="password-container">
-                <input type="password" name="password-confirm" placeholder="Confirmar nova senha" required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">
-                    <span class="material-icons">visibility</span>
-                </button>
+            <div class="form-group">
+                <div class="password-container">
+                    <input type="password" name="password-confirm" placeholder="Confirmar nova senha" required>
+                    <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                        <span class="material-icons">visibility</span>
+                    </button>
+                </div>
             </div>
             <button type="submit">Alterar senha</button>
         </form>

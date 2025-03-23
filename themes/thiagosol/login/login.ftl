@@ -16,12 +16,16 @@
             </div>
         </#if>
         <form action="${url.loginAction}" method="post">
-            <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
-            <div class="password-container">
-                <input type="password" name="password" placeholder="Senha" required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">
-                    <span class="material-icons">visibility</span>
-                </button>
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
+            </div>
+            <div class="form-group">
+                <div class="password-container">
+                    <input type="password" name="password" placeholder="Senha" required>
+                    <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                        <span class="material-icons">visibility</span>
+                    </button>
+                </div>
             </div>
             <input type="hidden" name="credentialId" value="${auth.credentialId!}">
             <#if realm.rememberMe>

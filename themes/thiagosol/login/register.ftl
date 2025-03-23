@@ -16,21 +16,33 @@
             </div>
         </#if>
         <form action="${url.registrationAction}" method="post">
-            <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
-            <input type="text" name="firstName" placeholder="Nome" required>
-            <input type="text" name="lastName" placeholder="Sobrenome" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <div class="password-container">
-                <input type="password" name="password" placeholder="Senha" required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">
-                    <span class="material-icons">visibility</span>
-                </button>
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
             </div>
-            <div class="password-container">
-                <input type="password" name="password-confirm" placeholder="Confirmar senha" required>
-                <button type="button" class="toggle-password" onclick="togglePassword(this)">
-                    <span class="material-icons">visibility</span>
-                </button>
+            <div class="form-group">
+                <input type="text" name="firstName" placeholder="Nome" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="lastName" placeholder="Sobrenome" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <div class="password-container">
+                    <input type="password" name="password" placeholder="Senha" required>
+                    <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                        <span class="material-icons">visibility</span>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="password-container">
+                    <input type="password" name="password-confirm" placeholder="Confirmar senha" required>
+                    <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                        <span class="material-icons">visibility</span>
+                    </button>
+                </div>
             </div>
             <#if recaptchaRequired??>
                 <div class="g-recaptcha" data-sitekey="${recaptchaSiteKey}"></div>
