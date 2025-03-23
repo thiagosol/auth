@@ -104,7 +104,6 @@ button:hover {
     background-color: var(--button-hover);
 }
 
-/* Estilos para o checkbox "Lembrar-me" */
 .remember-me {
     display: flex;
     align-items: center;
@@ -152,7 +151,6 @@ button:hover {
     text-decoration: underline;
 }
 
-/* Estilos para a página de erro */
 .error-message {
     background-color: var(--error-background);
     color: var(--error-color);
@@ -168,7 +166,6 @@ button:hover {
     line-height: 1.5;
 }
 
-/* Estilos para mensagens de informação */
 .info-message {
     background-color: var(--info-background);
     color: var(--info-color);
@@ -184,14 +181,12 @@ button:hover {
     line-height: 1.5;
 }
 
-/* Estilos para o reCAPTCHA */
 .form-group {
     margin: 1rem 0;
     display: flex;
     justify-content: center;
 }
 
-/* Container para input de senha com botão de visualizar */
 .password-container {
     position: relative;
     width: 100%;
