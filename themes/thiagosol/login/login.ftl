@@ -10,13 +10,16 @@
     <div class="login-container">
         <h1 id="service-title">Entrar</h1>
         <#if message?has_content>
-            <div class="error-message">
+            <div class="${message.type}-message">
                 <p>${message.summary}</p>
             </div>
         </#if>
         <form action="${url.loginAction}" method="post">
             <input type="text" name="username" placeholder="Email ou usuário" autofocus required>
-            <input type="password" name="password" placeholder="Senha" required>
+            <div class="password-container">
+                <input type="password" name="password" placeholder="Senha" required>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+            </div>
             <input type="hidden" name="credentialId" value="${auth.credentialId!}">
             <#if realm.rememberMe>
             <div class="remember-me">
@@ -65,6 +68,17 @@
         const form = document.querySelector('form');
         if (form) {
             form.action = form.action + "&theme=" + theme;
+        }
+
+        function togglePassword(button) {
+            const input = button.previousElementSibling;
+            if (input.type === "password") {
+                input.type = "text";
+                button.textContent = "🔒";
+            } else {
+                input.type = "password";
+                button.textContent = "👁️";
+            }
         }
     </script>
 </body>

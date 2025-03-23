@@ -10,13 +10,19 @@
     <div class="login-container">
         <h1 id="service-title">Redefinir Senha</h1>
         <#if message?has_content>
-            <div class="error-message">
+            <div class="${message.type}-message">
                 <p>${message.summary}</p>
             </div>
         </#if>
         <form action="${url.loginAction}" method="post">
-            <input type="password" name="password-new" placeholder="Nova senha" autofocus required>
-            <input type="password" name="password-confirm" placeholder="Confirmar nova senha" required>
+            <div class="password-container">
+                <input type="password" name="password-new" placeholder="Nova senha" autofocus required>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+            </div>
+            <div class="password-container">
+                <input type="password" name="password-confirm" placeholder="Confirmar nova senha" required>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+            </div>
             <button type="submit">Alterar senha</button>
         </form>
         <div class="links-container">
@@ -44,6 +50,17 @@
         const form = document.querySelector('form');
         if (form) {
             form.action = form.action + "&theme=" + theme;
+        }
+
+        function togglePassword(button) {
+            const input = button.previousElementSibling;
+            if (input.type === "password") {
+                input.type = "text";
+                button.textContent = "🔒";
+            } else {
+                input.type = "password";
+                button.textContent = "👁️";
+            }
         }
     </script>
 </body>

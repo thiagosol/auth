@@ -10,7 +10,7 @@
     <div class="login-container">
         <h1 id="service-title">Criar Conta</h1>
         <#if message?has_content>
-            <div class="error-message">
+            <div class="${message.type}-message">
                 <p>${message.summary}</p>
             </div>
         </#if>
@@ -19,8 +19,14 @@
             <input type="text" name="firstName" placeholder="Nome" required>
             <input type="text" name="lastName" placeholder="Sobrenome" required>
             <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Senha" required>
-            <input type="password" name="password-confirm" placeholder="Confirmar senha" required>
+            <div class="password-container">
+                <input type="password" name="password" placeholder="Senha" required>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+            </div>
+            <div class="password-container">
+                <input type="password" name="password-confirm" placeholder="Confirmar senha" required>
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">👁️</button>
+            </div>
             <#if recaptchaRequired??>
                 <div class="g-recaptcha" data-sitekey="${recaptchaSiteKey}"></div>
             </#if>
@@ -58,6 +64,17 @@
             script.src = 'https://www.google.com/recaptcha/api.js';
             document.head.appendChild(script);
         </#if>
+
+        function togglePassword(button) {
+            const input = button.previousElementSibling;
+            if (input.type === "password") {
+                input.type = "text";
+                button.textContent = "🔒";
+            } else {
+                input.type = "password";
+                button.textContent = "👁️";
+            }
+        }
     </script>
 </body>
 </html> 

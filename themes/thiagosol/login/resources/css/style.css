@@ -191,6 +191,85 @@ button:hover {
     justify-content: center;
 }
 
+/* Container para input de senha com botão de visualizar */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px; /* Espaço para o botão */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 16px;
+}
+
+/* Mensagens */
+.error-message {
+    background-color: var(--error-background);
+    color: var(--error-color);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.success-message {
+    background-color: var(--success-bg);
+    color: var(--success-color);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.warning-message {
+    background-color: var(--warning-bg);
+    color: var(--warning-color);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.info-message {
+    background-color: var(--info-background);
+    color: var(--info-color);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Variáveis de cores para mensagens */
+[data-theme="light"] {
+    --error-bg: #ffe6e6;
+    --error-color: #dc3545;
+    --success-bg: #e8f5e9;
+    --success-color: #28a745;
+    --warning-bg: #fff3cd;
+    --warning-color: #ffc107;
+    --info-bg: #e3f2fd;
+    --info-color: #0d6efd;
+}
+
+[data-theme="dark"] {
+    --error-bg: #350d0d;
+    --error-color: #ff4d4d;
+    --success-bg: #0d350d;
+    --success-color: #4caf50;
+    --warning-bg: #352a0d;
+    --warning-color: #ffeb3b;
+    --info-bg: #0d2435;
+    --info-color: #2196f3;
+}
+
 @media (max-width: 480px) {
     .login-container {
         padding: 1.5rem;

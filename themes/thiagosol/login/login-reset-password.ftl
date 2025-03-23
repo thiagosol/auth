@@ -10,25 +10,21 @@
     <div class="login-container">
         <h1 id="service-title">Redefinir Senha</h1>
         <#if message?has_content>
-            <div class="error-message">
+            <div class="${message.type}-message">
                 <p>${message.summary}</p>
             </div>
         </#if>
         <form id="kc-reset-password-form" action="${url.loginAction}" method="post">
-            <div class="form-group">
-                <input type="text" id="username" name="username" class="form-control" placeholder="Email ou usuário"
-                    autofocus
-                    aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"
-                />
-                <#if messagesPerField.existsError('username')>
-                    <span id="input-error-username" class="error-message" aria-live="polite">
-                        ${kcSanitize(messagesPerField.get('username'))?no_esc}
-                    </span>
-                </#if>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Enviar instruções</button>
-            </div>
+            <input type="text" id="username" name="username" placeholder="Email ou usuário" 
+                autofocus
+                <#if messagesPerField.existsError('username')>aria-invalid="true"</#if>
+            />
+            <#if messagesPerField.existsError('username')>
+                <span class="error-message" aria-live="polite">
+                    ${kcSanitize(messagesPerField.get('username'))?no_esc}
+                </span>
+            </#if>
+            <button type="submit">Enviar instruções</button>
         </form>
         <div class="links-container">
             <a href="${url.loginUrl}" class="link" id="login-link">Voltar para login</a>
@@ -55,6 +51,12 @@
         const form = document.querySelector('form');
         if (form) {
             form.action = form.action + "&theme=" + theme;
+            
+            const themeInput = document.createElement('input');
+            themeInput.type = 'hidden';
+            themeInput.name = 'theme';
+            themeInput.value = theme;
+            form.appendChild(themeInput);
         }
     </script>
 </body>
