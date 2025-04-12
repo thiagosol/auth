@@ -8,7 +8,7 @@ services:
     container_name: auth
     environment:
       KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://thiagosol.com:5432/auth
+      KC_DB_URL: jdbc:postgresql://${SERVER_IP}:5432/auth
       KC_DB_USERNAME: ${DB_POSTGRES_USER}
       KC_DB_PASSWORD: ${DB_POSTGRES_PASS}
       KC_HOSTNAME: auth.thiagosol.com
