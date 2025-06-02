@@ -29,7 +29,7 @@ services:
       - "traefik.http.services.auth-api.loadbalancer.server.port=8080"
       - "traefik.http.routers.auth-api.middlewares=keycloak-headers@docker"
       - "traefik.http.middlewares.keycloak-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
-      - "traefik.docker.network=proxy"
+      - "traefik.docker.network=external-sol-apis"
     volumes:
       - keycloak_data:/opt/keycloak/data
       - ./themes:/opt/keycloak/themes
