@@ -47,7 +47,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 400M
+          memory: 600M
 
 volumes:
   keycloak_data:
